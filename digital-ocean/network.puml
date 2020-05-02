@@ -1,0 +1,19 @@
+@startuml
+
+package DOServer {
+
+    package GhostBackend <<network>> {
+        [MariaDB]
+    }
+
+    package Web <<network>> {
+        [GhostInstance]
+    }
+
+    GhostInstance - MariaDB 
+    [Traefik]--Web
+}
+
+HTTP -d- Traefik
+HTTPS -d- Traefik
+@enduml
